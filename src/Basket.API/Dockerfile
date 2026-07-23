@@ -7,9 +7,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copiar archivos .csproj respetando la carpeta src/
+# Copiar archivos .csproj respetando la ruta EXACTA de GitHub (con la doble carpeta BuildingBlocks)
 COPY ["src/Basket.API/Basket.API.csproj", "src/Basket.API/"]
-COPY ["src/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/"]
+COPY ["src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/BuildingBlocks/"]
 RUN dotnet restore "src/Basket.API/Basket.API.csproj"
 
 # Copiar todo el código del repositorio
