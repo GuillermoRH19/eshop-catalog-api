@@ -7,14 +7,14 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copia los archivos de proyecto para restaurar dependencias
-COPY ["Basket.API/Basket.API.csproj", "Basket.API/"]
-COPY ["BuildingBlocks/BuildingBlocks.csproj", "BuildingBlocks/"]
-RUN dotnet restore "Basket.API/Basket.API.csproj"
+# Copiar archivos .csproj respetando la carpeta src/
+COPY ["src/Basket.API/Basket.API.csproj", "src/Basket.API/"]
+COPY ["src/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/"]
+RUN dotnet restore "src/Basket.API/Basket.API.csproj"
 
-# Copia todo el código y compila
+# Copiar todo el código del repositorio
 COPY . .
-WORKDIR "/src/Basket.API"
+WORKDIR "/src/src/Basket.API"
 RUN dotnet build "Basket.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
