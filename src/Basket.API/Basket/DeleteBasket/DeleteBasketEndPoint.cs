@@ -1,4 +1,4 @@
-﻿namespace Basket.API.Basket.DeleteBasket
+namespace Basket.API.Basket.DeleteBasket
 {
     public record DeleteBasketResponse(bool IsSuccess);
     public class DeleteBasketEndPoint : ICarterModule
@@ -17,6 +17,6 @@
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Delete Basket")
             .WithDescription("Delete Basket");
-        })
+        }
     }
 }

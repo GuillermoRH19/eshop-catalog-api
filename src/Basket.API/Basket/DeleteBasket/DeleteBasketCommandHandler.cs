@@ -1,4 +1,4 @@
-﻿using Basket.API.Data;
+using Basket.API.Data;
 
 namespace Basket.API.Basket.DeleteBasket
 {
@@ -17,7 +17,7 @@ namespace Basket.API.Basket.DeleteBasket
     {
         public async Task<DeleteBasketResult> Handle(DeleteBasketCommand command, CancellationToken cancellationToken)
         { 
-        await repository DeleteBasket(command.UserName, cancellationToken);
+        await repository.DeleteBasket(command.UserName, cancellationToken);
             return new DeleteBasketResult(true);
         }
     }

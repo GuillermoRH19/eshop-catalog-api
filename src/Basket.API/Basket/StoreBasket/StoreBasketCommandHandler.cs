@@ -1,4 +1,4 @@
-﻿using Basket.API.Data;
+using Basket.API.Data;
 using Basket.API.Models;
 
 namespace Basket.API.Basket.StoreBasket
@@ -20,10 +20,8 @@ namespace Basket.API.Basket.StoreBasket
         public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
         {
             ShoppingCart cart = command.Cart;
-            await repository StoreBasket(cart, cancellationToken);
+            await repository.StoreBasket(cart, cancellationToken);
             return new StoreBasketResult(command.Cart.UserName);
         }
     }
-}
-
 }
