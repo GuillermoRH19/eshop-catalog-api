@@ -10,6 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Application services
 builder.Services.AddCarter();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder => builder
+            .WithOrigins("https://mellow-bonbon-0b2969.netlify.app", "http://localhost:5173")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
@@ -43,6 +52,8 @@ builder.Services.AddHealthChecks()
 var app = builder.Build();
 
 // Pipeline
+app.UseRouting();
+app.UseCors("AllowFrontend");
 app.MapCarter();
 app.UseExceptionHandler(options => { });
 
