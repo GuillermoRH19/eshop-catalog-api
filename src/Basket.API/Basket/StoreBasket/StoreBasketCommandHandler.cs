@@ -1,5 +1,6 @@
 using Basket.API.Data;
 using Basket.API.Models;
+using FluentValidation;
 
 namespace Basket.API.Basket.StoreBasket
 {

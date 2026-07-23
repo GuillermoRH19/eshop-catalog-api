@@ -9,7 +9,7 @@ namespace Basket.API.Basket.DeleteBasket
             {
                 var command = new DeleteBasketCommand(userName);
                 var result = await sender.Send(command);
-                var response = new DeleteBasketResponse(result);
+                var response = new DeleteBasketResponse(result.isSuccess);
                 return Results.Ok(response);
             })
             .WithName("DeleteBasket")
