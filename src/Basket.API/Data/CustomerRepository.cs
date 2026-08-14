@@ -15,5 +15,12 @@ namespace Basket.API.Data
             await session.SaveChangesAsync(cancellationToken);
             return (customer, true);
         }
+
+        public async Task<IReadOnlyList<Customer>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await session.Query<Customer>()
+                .OrderBy(c => c.Name)
+                .ToListAsync(cancellationToken);
+        }
     }
 }

@@ -43,6 +43,14 @@ namespace Orders.API.Data
                 .ToListAsync(cancellationToken);
         }
 
+        public async Task<IReadOnlyList<Order>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await _orders.Find(FilterDefinition<Order>.Empty)
+                .SortByDescending(o => o.CreatedAt)
+                .Limit(500)
+                .ToListAsync(cancellationToken);
+        }
+
         public async Task<bool> TryCreateAsync(Order order, CancellationToken cancellationToken = default)
         {
             try
