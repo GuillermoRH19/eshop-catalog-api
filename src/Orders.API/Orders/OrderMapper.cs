@@ -9,10 +9,11 @@ namespace Orders.API.Orders
     {
         public static OrderResponse ToResponse(this Order order) => new(
             order.Id,
+            order.Id.ToOrderNumber(),
             order.CustomerId,
             order.CreatedAt,
             order.Status.ToString(),
-            order.Items.Select(i => new OrderItemResponse(i.ProductId, i.ProductName, i.Quantity, i.UnitPrice, i.LineTotal)).ToList(),
+            order.Items.Select(i => new OrderItemResponse(i.ProductId, i.ProductId.ToShortCode(), i.ProductName, i.Quantity, i.UnitPrice, i.LineTotal)).ToList(),
             order.Subtotal,
             order.Tax,
             order.Total);
