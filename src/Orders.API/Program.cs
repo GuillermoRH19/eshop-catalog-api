@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
         policy => policy
-            .WithOrigins("https://mellow-bonbon-0b2969.netlify.app", "http://localhost:5173")
+            .WithOrigins("https://mellow-bonbon-0b2969.netlify.app", "http://localhost:5173", "http://localhost:5174")
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
