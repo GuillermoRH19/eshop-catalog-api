@@ -12,7 +12,7 @@ namespace Basket.API.Basket.StoreBasket
         public StoreBasketCommandValidator()
         {
             RuleFor(x => x.Cart).NotNull().WithMessage("El carro no puede ser null");
-            RuleFor(x => x.Cart).NotEmpty().WithMessage("El nombre de usuario es requerido");
+            RuleFor(x => x.Cart.UserName).NotEmpty().WithMessage("El nombre de usuario es requerido");
         }
     }
     public class StoreBasketCommandHandler(IBasketRepository repository)

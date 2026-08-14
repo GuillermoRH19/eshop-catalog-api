@@ -15,11 +15,11 @@ namespace Basket.API.Basket.GetBasket
                 var response = result.Adapt<GetBasketResponse>();
                 return Results.Ok(response);
             })
-                .WithName("GetProductById")
-                .Produces<StoreBasketResponse>(StatusCodes.Status201Created)
-                .ProducesProblem(StatusCodes.Status400BadRequest)
-                .WithSummary("Get Product by Id")
-                .WithDescription("Get Product by Id");
+                .WithName("GetBasket")
+                .Produces<GetBasketResponse>(StatusCodes.Status200OK)
+                .ProducesProblem(StatusCodes.Status404NotFound)
+                .WithSummary("Get Basket by UserName")
+                .WithDescription("Get Basket by UserName");
         }
     }
 }
